@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>For You, Quietly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: linear-gradient(180deg, #0b0620, #140b2d);
+      color: #e9e3ff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 520px;
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 30px 25px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease;
+    }
+    h1 {
+      font-weight: normal;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    p {
+      line-height: 1.7;
+      font-size: 16px;
+      white-space: pre-line;
+    }
+    button {
+      background: #7f5af0;
+      border: none;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover { background: #6842e3; }
+    .center { text-align: center; }
+    .hidden { display: none; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SCREEN 1 -->
+  <div id="screen1">
+    <h1>For You, Quietly</h1>
+    <p class="center">
+      Ini bukan hadiah besar.<br>
+      Tapi ini dibuat dengan niat.
+    </p>
+    <div class="center">
+      <button onclick="nextScreen(2)">Masuk</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2 : VOICE NOTE -->
+  <div id="screen2" class="hidden">
+    <h1>Aku Cerita Tentang Kamu</h1>
+    <p>
+Hari ini dia ulang tahun.
+
+Orangnya sering kelihatan kuat,
+tapi sebenarnya gampang capek.
+Dia jarang minta apa-apa,
+tapi selalu ngasih banyak.
+
+Kalau suatu hari aku lupa,
+aku mau ingat:
+dia bukan orang yang perlu diselamatkan,
+tapi orang yang layak ditemani.
+    </p>
+
+    <audio controls style="width:100%;margin-top:15px;">
+      <source src="voice-note.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung audio.
+    </audio>
+
+    <div class="center">
+      <button onclick="nextScreen(3)">Lanjut</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3 : LETTER -->
+  <div id="screen3" class="hidden">
+    <h1>Satu Hal yang Aku Takutkan</h1>
+    <p>
+Aku nggak takut jarak.
+Aku nggak takut waktu.
+
+Yang aku takutkan adalah
+suatu hari kamu capek
+dan mulai ngerasa
+aku nggak lagi menuju kamu.
+
+Bukan karena aku pergi,
+tapi karena aku gagal nunjukin
+kalau niatku tetap sama.
+
+Kalau aku terlihat pelan,
+itu bukan karena aku ragu,
+tapi karena aku lagi belajar
+membangun sesuatu yang nggak sementara.
+    </p>
+
+    <div class="center">
+      <button onclick="nextScreen(4)">Selesai</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 4 : END -->
+  <div id="screen4" class="hidden center">
+    <p>
+Terima kasih sudah membaca sampai sini.
+
+Tidak perlu membalas.
+Aku hanya ingin kamu tahu,
+aku di sini.
+    </p>
+  </div>
+
+</div>
+
+<script>
+function nextScreen(n) {
+  document.querySelectorAll('.container > div')
+    .forEach(div => div.classList.add('hidden'));
+  document.getElementById('screen' + n)
+    .classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
